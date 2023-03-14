@@ -3,6 +3,7 @@ let wdth
 let hght
 let Lane
 let Lanes = []
+let score
 
 function setup() {
   let wdth=800
@@ -37,7 +38,7 @@ function setup() {
   Lane = new lane(hght/16*15) 
   Lanes.push(Lane)
   frogger=new frog(width/14*7,hght-wdth/14*2)
-  
+  score=0
 }
 
 function draw() {
@@ -45,4 +46,18 @@ function draw() {
   fill(0,255,0)
   frogger.show()
   
+
+  for(i = 0; i < Lanes.length; i++){
+    if(frogger.pos.y==i.y/*&&i.been==false*/){
+      point+=10
+      i.been=true
+    }
+
+  }
+
+  fill(0)
+  textSize(20)
+  text(score,20,20)
+
+  print(Lanes)
 }
