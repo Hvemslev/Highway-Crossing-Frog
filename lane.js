@@ -1,5 +1,0 @@
-class lane{
-    constructor(){
-
-    }
-}
