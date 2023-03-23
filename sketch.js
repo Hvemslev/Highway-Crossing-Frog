@@ -2,13 +2,13 @@ let frogger
 let Lane
 let Lanes = []
 let score
-//let Cars
+let car
 
 function setup() {
   width=700 // HAS to be a mulitiple of 7 otherwise will round up or down, and won't allign playerposition with lanes
   height=width/14*15
   createCanvas(width,height);
-  //Cars = new cars(x,y)
+  car = new cars(x,y)
   Lane = new lane(width/14*2) 
   Lanes.push(Lane)
   Lane = new lane(width/14*3) 
@@ -55,7 +55,7 @@ function draw() {
   
   fill(0,255,0)
   frogger.show()
-  cars.show()
+  
   
 
   for(i = 0; i < Lanes.length; i++){
@@ -69,9 +69,8 @@ function draw() {
   print(frogger.pos.y)
 
 
-
   fill(255)
   textSize(20)
   text(score,20,20)
-
+  car.show()
 }
