@@ -3,12 +3,14 @@ let Lane
 let Lanes = []
 let score
 let car
+let Cars = []
 
 function setup() {
   width=700 // HAS to be a mulitiple of 7 otherwise will round up or down, and won't allign playerposition with lanes
   height=width/14*15
   createCanvas(width,height);
-  car = new cars(x,y)
+  car = new cars(10,width/14*12)
+  Cars.push(car)
   Lane = new lane(width/14*2) 
   Lanes.push(Lane)
   Lane = new lane(width/14*3) 
@@ -72,5 +74,9 @@ function draw() {
   fill(255)
   textSize(20)
   text(score,20,20)
-  car.show()
+  Cars[0].show()
+  car.move()
+  if(Cars[0].x==300) {
+    Cars.splice(0,1)
+  }
 }
