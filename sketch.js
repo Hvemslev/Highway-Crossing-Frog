@@ -55,7 +55,7 @@ function draw() {
   
   fill(0,255,0)
   frogger.show()
-  //cars.show()
+  cars.show()
   
 
   for(i = 0; i < Lanes.length; i++){
