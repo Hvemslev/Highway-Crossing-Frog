@@ -54,11 +54,9 @@ function draw() {
   rect(0,width/14*2,width,width/14*5)
   
   
-  
   fill(0,255,0)
   frogger.show()
-  
-  
+
 
   for(i = 0; i < Lanes.length; i++){
     if(frogger.pos.y==Lanes[i].y && Lanes[i].been==false){
