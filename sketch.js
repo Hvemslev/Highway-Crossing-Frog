@@ -5,8 +5,8 @@ let score
 //let Cars
 
 function setup() {
-  width=400
-  height=width/14*16
+  width=700 // HAS to be a mulitiple of 7 otherwise will round up or down, and won't allign playerposition with lanes
+  height=width/14*15
   createCanvas(width,height);
   //Cars = new cars(x,y)
   Lane = new lane(width/14*2) 
@@ -35,12 +35,24 @@ function setup() {
   Lanes.push(Lane)
   //Lane = new lane(height/16*14) 
   //Lanes.push(Lane)
-  frogger=new frog(width/14*7,height/16*14)
+  frogger=new frog(width/14*7,width/14*13)
   score=0
+
+  
 }
 
 function draw() {
   background(0);
+  fill(0,180,0)
+  rect(0,width/14,width,width/14)
+  fill(200,0,200)
+  rect(0,width/14*7,width,width/14)
+  rect(0,width/14*13,width,width/14)
+  fill(0,0,180)
+  rect(0,width/14*2,width,width/14*5)
+  
+  
+  
   fill(0,255,0)
   frogger.show()
   //cars.show()
@@ -53,11 +65,12 @@ function draw() {
     }
   }
 
-  print(Lanes[length-2].been)
+  print(Lanes)
+  print(frogger.pos.y)
 
 
 
-  fill(0)
+  fill(255)
   textSize(20)
   text(score,20,20)
 
