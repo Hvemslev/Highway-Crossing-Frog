@@ -4,12 +4,12 @@ class cars {
         this.y = y
     }
 show() {
-    rect(this.x,this.y+5,100,width/14-5)
+    rect(this.x,this.y+5,width/14,width/14-5)
 
 }
 
 move() {
-this.x+=2
+this.x-=1
 
 
 }
