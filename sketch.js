@@ -87,7 +87,7 @@ function draw() {
     Cars[i].show()
     Cars[i].move()
     if(Cars[i].x==0-width/14) {
-        Cars[i].x=Cars[i%4].x+width/14*17
+        Cars[i].x=width/14*17
     }
   }
 
