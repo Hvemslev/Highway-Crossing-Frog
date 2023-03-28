@@ -1,15 +1,16 @@
 class cars {
-    constructor(x,y) {
+    constructor(x,y,spd) {
         this.x = x
         this.y = y
+        this.spd = spd
     }
 show() {
-    rect(this.x,this.y+5,width/14,width/14-5)
+    rect(this.x,this.y,width/14,width/14)
 
 }
 
 move() {
-this.x-=1
+this.x+=this.spd
 
 
 }
