@@ -5,6 +5,7 @@ let score
 let car
 let Cars = []
 
+
 function setup() {
   width=700 // HAS to be a mulitiple of 7 otherwise will round up or down, and won't allign playerposition with lanes
   height=width/14*15
@@ -49,7 +50,7 @@ function setup() {
   Cars.push(car)
 
 }
-
+ 
 function draw() {
   background(0);
   fill(0,180,0)
@@ -61,9 +62,10 @@ function draw() {
   rect(0,width/14*2,width,width/14*5)
   
   
+  
   fill(0,255,0)
   frogger.show()
-
+  
 
   for(i = 0; i < Lanes.length; i++){
     if(frogger.pos.y==Lanes[i].y && Lanes[i].been==false){
