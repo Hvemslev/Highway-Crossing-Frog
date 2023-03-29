@@ -4,6 +4,9 @@ let Lanes = []
 let score
 let car
 let Cars = []
+let Log
+let Logs = []
+let life
 
 
 function setup() {
@@ -11,6 +14,8 @@ function setup() {
   height=width/14*15
   createCanvas(width,height);
   
+  life=3
+
   Lane = new lane(width/14*2) 
   Lanes.push(Lane)
   Lane = new lane(width/14*3) 
@@ -37,6 +42,21 @@ function setup() {
   Lanes.push(Lane)
   //Lane = new lane(height/16*14) 
   //Lanes.push(Lane)
+  
+  
+  //wooden logs
+  Log = new log(0,6,4,1)
+  Logs.push(Log)
+  Log = new log(300,5,4,3)
+  Logs.push(Log)
+  Log = new log(200,4,4,2)
+  Logs.push(Log)
+  Log = new log(100,3,4,1)
+  Logs.push(Log)
+  Log = new log(400,2,4,3)
+  Logs.push(Log)
+  
+  //frog
   frogger=new frog(width/14*7,width/14*13)
   
   score=0
@@ -48,6 +68,9 @@ function setup() {
   Cars.push(car)
   car = new cars(width/14*15,width/14*12,-2)
   Cars.push(car)
+
+
+  
 
 }
  
@@ -61,7 +84,21 @@ function draw() {
   fill(0,0,180)
   rect(0,width/14*2,width,width/14*5)
   
-  
+  //logs movement and hitbox
+  for(i = 0; i < Logs.length; i++){
+    Logs[i].show()
+    Logs[i].move()
+    
+  }
+
+  for(i = 0; i < Logs.length; i++){
+  //only for one direction
+    if(Logs[i].pos.x>width){
+    Logs[i].pos.x=0-Logs[i].l
+    }
+  }
+
+
   
   fill(0,255,0)
   frogger.show()
@@ -92,6 +129,17 @@ function draw() {
   }
 
 
+  
 
 
+  
+  if(frogger.pos.y<=width/14*6&&frogger.pos.y>=width/14*2){
+    for(i = 0; i < Logs.length; i++){
+      if(frogger.pos.y==Logs[i].pos.y-5){
+        if(frogger.pos.x>Logs[i].pos.x&&frogger.pos.x<Logs[i].pos.x+Logs[i].l){
+          frogger.pos.add(Logs[i].dir,0)
+        } else {die()}
+      }
+    }
+  }
 }
