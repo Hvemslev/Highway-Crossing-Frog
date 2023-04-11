@@ -57,7 +57,7 @@ function setup() {
   Logs.push(Log)
   
   //frog
-  frogger=new frog(width/14*7,width/14*13)
+  frogger=new frog(width/14*7,width/14*13,width/14,width/14)
   
   score=0
 
