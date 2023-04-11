@@ -47,11 +47,11 @@ function setup() {
   //wooden logs
   Log = new log(0,6,4,1)
   Logs.push(Log)
-  Log = new log(300,5,4,3)
+  Log = new log(300,5,4,-2)
   Logs.push(Log)
   Log = new log(200,4,4,2)
   Logs.push(Log)
-  Log = new log(100,3,4,1)
+  Log = new log(100,3,4,-1)
   Logs.push(Log)
   Log = new log(400,2,4,3)
   Logs.push(Log)
@@ -93,10 +93,21 @@ function draw() {
 
   for(i = 0; i < Logs.length; i++){
   //only for one direction
-    if(Logs[i].pos.x>width){
-    Logs[i].pos.x=0-Logs[i].l
+    if(Logs[i].dir>0){
+      if(Logs[i].pos.x>width){
+        Logs[i].pos.x=0-Logs[i].l
+      }
+    } else if(Logs[i].dir<0){
+      if(Logs[i].pos.x<-Logs[i].l){
+        Logs[i].pos.x=width+Logs[i].l
+      }
     }
+
   }
+  
+
+
+  
 
 
   
@@ -136,6 +147,12 @@ function draw() {
   if(frogger.pos.y<=width/14*6&&frogger.pos.y>=width/14*2){
     for(i = 0; i < Logs.length; i++){
       if(frogger.pos.y==Logs[i].pos.y-5){
+        if(frogger.pos.x>Logs[i].pos.x&&frogger.pos.x<Logs[i].pos.x+width/28){
+          frogger.pos.x=Logs[i].pos.x+3
+        }
+        
+        
+        
         if(frogger.pos.x>Logs[i].pos.x&&frogger.pos.x<Logs[i].pos.x+Logs[i].l){
           frogger.pos.add(Logs[i].dir,0)
         } else {die()}
