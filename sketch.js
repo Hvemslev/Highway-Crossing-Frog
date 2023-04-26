@@ -143,11 +143,6 @@ function draw() {
   }
   
 
-
-  
-
-
-  
   fill(0,255,0)
   if(life>0){
     frogger.show()
