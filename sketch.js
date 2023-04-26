@@ -193,5 +193,6 @@ function draw() {
     text('GAME OVER',width/2,height/2+5)
     textSize(20)
     text('Press [SPACE] to try again',width/2,height/2+50)
+    text('Score: '+score,width/2,height/4*3)
   }
 }
