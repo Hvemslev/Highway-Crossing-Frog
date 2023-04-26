@@ -167,8 +167,6 @@ function draw() {
 
 
   fill(255)
-  textSize(20)
-  text(score,20,20)
   
   //cars cycle + car collision
   for(i = 0; i < Cars.length; i++){
@@ -204,16 +202,17 @@ function draw() {
     }
   }
 
-
-
-
+  //win
   if(frogger.pos.y==width/14){
+    timer=400
     score+=50
     frogger.pos.set(width/14*7,width/14*13)
   }
 
-
   //HUD
+  fill(255)
+  textSize(20)
+  text(score,20,33)
   for(i = 0; i < life; i++) {
     image(imag,10+i*40,height-50,50,50)
   }
