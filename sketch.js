@@ -168,6 +168,12 @@ function draw() {
 
 
 
+  if(frogger.pos.y==width/14){
+    score+=50
+    frogger.pos.set(width/14*7,width/14*13)
+  }
+
+
   //HUD
   for(i = 0; i < life; i++) {
     image(imag,10+i*40,height-50,50,50)
@@ -185,5 +191,7 @@ function draw() {
     textAlign(CENTER,CENTER)
     textSize(50)
     text('GAME OVER',width/2,height/2+5)
+    textSize(20)
+    text('Press [SPACE] to try again',width/2,height/2+50)
   }
 }
