@@ -1,12 +1,17 @@
 let frogger
 let Lane
 let Lanes = []
-let score
+
 let car
 let Cars = []
 let Log
 let Logs = []
+
+//HUD elements
+let score
 let life
+let imag
+let timer
 
 
 function setup() {
@@ -14,7 +19,9 @@ function setup() {
   height=width/14*15
   createCanvas(width,height);
   
-  life=3
+  life=5
+  imag=loadImage('frogger.png')
+  timer=400
 
   Lane = new lane(width/14*2) 
   Lanes.push(Lane)
@@ -38,10 +45,6 @@ function setup() {
   Lanes.push(Lane)
   Lane = new lane(width/14*12) 
   Lanes.push(Lane)
-  Lane = new lane(width/14*13) 
-  Lanes.push(Lane)
-  //Lane = new lane(height/16*14) 
-  //Lanes.push(Lane)
   
   
   //wooden logs
@@ -83,6 +86,8 @@ function draw() {
   rect(0,width/14*13,width,width/14)
   fill(0,0,180)
   rect(0,width/14*2,width,width/14*5)
+
+  
   
   //logs movement and hitbox
   for(i = 0; i < Logs.length; i++){
@@ -112,7 +117,10 @@ function draw() {
 
   
   fill(0,255,0)
-  frogger.show()
+  if(life>0){
+    frogger.show()
+  }
+  
   
 
   for(i = 0; i < Lanes.length; i++){
@@ -147,9 +155,6 @@ function draw() {
   if(frogger.pos.y<=width/14*6&&frogger.pos.y>=width/14*2){
     for(i = 0; i < Logs.length; i++){
       if(frogger.pos.y==Logs[i].pos.y-5){
-        if(frogger.pos.x>Logs[i].pos.x&&frogger.pos.x<Logs[i].pos.x+width/28){
-          frogger.pos.x=Logs[i].pos.x+3
-        }
         
         
         
@@ -158,5 +163,27 @@ function draw() {
         } else {die()}
       }
     }
+  }
+
+
+
+
+  //HUD
+  for(i = 0; i < life; i++) {
+    image(imag,10+i*40,height-50,50,50)
+  }
+  if(life>0){
+    timer-=0.3
+  }
+  fill(0,255,0)
+  rect(width-10-timer,height-40,timer,30)
+  if(timer<0){
+    die()
+  }
+  if(life==0){
+    fill(255)
+    textAlign(CENTER,CENTER)
+    textSize(50)
+    text('GAME OVER',width/2,height/2+5)
   }
 }
