@@ -65,11 +65,11 @@ function setup() {
   score=0
 
   //1st lane
-  car = new cars(width/14*3,width/14*12,-2)
+  car = new cars(width/14*3,width/14*12,1,-2)
   Cars.push(car)
-  car = new cars(width/14*8,width/14*12,-2)
+  car = new cars(width/14*8,width/14*12,1,-2)
   Cars.push(car)
-  car = new cars(width/14*15,width/14*12,-2)
+  car = new cars(width/14*15,width/14*12,1,-2)
   Cars.push(car)
 
 
@@ -144,6 +144,13 @@ function draw() {
     Cars[i].move()
     if(Cars[i].x==0-width/14) {
         Cars[i].x=width/14*17
+    }
+
+
+
+
+    if(frogger.pos.x>Cars[i].x-40&&frogger.pos.x<Cars[i].x+Cars[i].l&&frogger.pos.y==Cars[i].y){
+      die()
     }
   }
 
