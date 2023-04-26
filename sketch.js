@@ -72,6 +72,38 @@ function setup() {
   car = new cars(width/14*15,width/14*12,1,-2)
   Cars.push(car)
 
+  //2nd lane
+  car = new cars(width/14*3,width/14*11,1,2)
+  Cars.push(car)
+  car = new cars(width/14*8,width/14*11,1,2)
+  Cars.push(car)
+  car = new cars(width/14*15,width/14*11,1,2)
+  Cars.push(car)
+
+  //3rd lane
+  car = new cars(width/14*3,width/14*10,1,-4)
+  Cars.push(car)
+  car = new cars(width/14*8,width/14*10,1,-4)
+  Cars.push(car)
+  car = new cars(width/14*15,width/14*10,1,-4)
+  Cars.push(car)
+
+  //4th lane
+  car = new cars(width/14*3,width/14*9,1,2)
+  Cars.push(car)
+  car = new cars(width/14*8,width/14*9,1,2)
+  Cars.push(car)
+  car = new cars(width/14*15,width/14*9,1,2)
+  Cars.push(car)
+
+  //5th lane
+  car = new cars(width/14*3,width/14*8,1,-3)
+  Cars.push(car)
+  car = new cars(width/14*8,width/14*8,1,-3)
+  Cars.push(car)
+  car = new cars(width/14*15,width/14*8,1,-3)
+  Cars.push(car)
+
 
   
 
@@ -138,15 +170,15 @@ function draw() {
   textSize(20)
   text(score,20,20)
   
-  
+  //cars cycle + car collision
   for(i = 0; i < Cars.length; i++){
     Cars[i].show()
     Cars[i].move()
-    if(Cars[i].x==0-width/14) {
+    if(Cars[i].x<0-width/14&&Cars[i].spd<0) {
         Cars[i].x=width/14*17
-    }
-
-
+    } else if(Cars[i].x>width+width/14&&Cars[i].spd>0){
+        Cars[i].x=0-width/14*3
+      }
 
 
     if(frogger.pos.x>Cars[i].x-40&&frogger.pos.x<Cars[i].x+Cars[i].l&&frogger.pos.y==Cars[i].y){
