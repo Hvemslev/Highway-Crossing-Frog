@@ -187,9 +187,6 @@ function draw() {
   if(frogger.pos.y<=width/14*6&&frogger.pos.y>=width/14*2){
     for(i = 0; i < Logs.length; i++){
       if(frogger.pos.y==Logs[i].pos.y-5){
-        
-        
-        
         if(frogger.pos.x>Logs[i].pos.x&&frogger.pos.x<Logs[i].pos.x+Logs[i].l){
           frogger.pos.add(Logs[i].dir,0)
         } else {die()}
